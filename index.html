@@ -1,189 +1,269 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel La Joya Tulancingo | Propuesta de Rediseño</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --dorado: #b0914f;
-            --oscuro: #1a1a1a;
-            --blanco: #f9f9f9;
-            --texto: #333;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel La Joya | Tulancingo</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap');
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #F8F9FA;
+}
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--blanco);
-            color: var(--texto);
-            line-height: 1.6;
-        }
+header {
+    background-color: #1a3c34; 
+    color: #d4af37; 
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; /* Fijo en la parte superior */
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1000;
+}
 
-        /* Header Optimizado */
-        header {
-            background: white;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0;
+}
 
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            color: var(--dorado);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+.menu-icon { font-size: 1.5rem; cursor: pointer; }
 
-        /* Hero Section - AQUÍ SE SOLUCIONA EL BLOQUEO DE LA FOTO */
-        .hero {
-            position: relative;
-            height: 80vh;
-            background: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80') center/cover;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            padding-bottom: 50px;
-        }
+.hero {
+    height: 80vh; /* Ocupa el 80% de la pantalla inicial */
+    margin-top: 55px; /* Compensa el header fijo */
+    background-image: url('https://images.unsplash.com/photo-1542314831-c6a4d27ece08?auto=format&fit=crop&w=800&q=80');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    box-sizing: border-box;
+}
 
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%);
-        }
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to bottom, rgba(26,60,52,0.1), rgba(26,60,52,0.85));
+}
 
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            color: white;
-            padding: 20px;
-        }
+.hero-text {
+    position: relative;
+    z-index: 1;
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 20px;
+}
 
-        .hero-content h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
+.hero-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    margin: 0 0 10px 0;
+    line-height: 1.2;
+}
 
-        /* BOTÓN DE RESERVA: Visible pero no obstructivo */
-        .btn-reserva {
-            background-color: var(--dorado);
-            color: white;
-            padding: 15px 40px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            display: inline-block;
-            transition: transform 0.3s ease;
-            box-shadow: 0 4px 15px rgba(176, 145, 79, 0.4);
-        }
+.hero-text p {
+    font-size: 1rem;
+    font-weight: 300;
+    margin: 0;
+    color: #e0e0e0;
+}
 
-        .btn-reserva:active { transform: scale(0.95); }
+.section { padding: 40px 20px; }
 
-        /* Sección de Propuesta de Valor */
-        .features {
-            padding: 40px 20px;
-            text-align: center;
-        }
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #1a3c34;
+    text-align: center;
+    margin-bottom: 30px;
+}
 
-        .features h2 {
-            font-family: 'Playfair Display', serif;
-            margin-bottom: 30px;
-            font-size: 1.8rem;
-        }
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 
-        .feature-grid {
-            display: grid;
-            gap: 20px;
-        }
+.card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
 
-        .card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid #eee;
-        }
+.card-img {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
 
-        .card h3 { color: var(--dorado); margin-bottom: 10px; }
+.card-content { padding: 20px; }
 
-        /* Barra de Reservas FIJA (Mobile First) */
-        .sticky-booking {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background: white;
-            padding: 12px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 -2px 15px rgba(0,0,0,0.1);
-            z-index: 2000;
-        }
+.card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: #1a3c34;
+    margin: 0 0 10px 0;
+}
 
-        .price-label { font-size: 0.8rem; color: #666; }
-        .price-amount { font-weight: 700; font-size: 1.1rem; display: block; }
+.card-desc {
+    font-size: 1rem;
+    color: #666;
+    margin: 0;
+    line-height: 1.5;
+}
 
-        @media (min-width: 768px) {
-            .feature-grid { grid-template-columns: repeat(3, 1fr); }
-            .hero-content h1 { font-size: 4rem; }
-        }
-    </style>
+.benefits {
+    background-color: #1a3c34;
+    color: white;
+    padding: 40px 20px;
+}
+
+.benefits-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #d4af37;
+    margin: 0 0 20px 0;
+    text-align: center;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.benefit-icon {
+    color: #d4af37;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.footer {
+    text-align: center;
+    padding: 30px 20px 100px 20px; /* Padding extra abajo para que no lo tape la barra sticky */
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.sticky-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    padding: 15px 20px;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.price {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.price strong {
+    display: block;
+    font-size: 1.3rem;
+    color: #1a3c34;
+}
+
+.btn {
+    background-color: #d4af37;
+    color: #1a3c34;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1rem;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.4);
+    transition: transform 0.2s;
+}
+
+.btn:active { transform: scale(0.95); }
+</style>
 </head>
 <body>
-
     <header>
-        <div class="logo">La Joya</div>
-        <div style="font-size: 1.5rem;">☰</div>
+        <h1 class="logo">LA JOYA</h1>
+        <div class="menu-icon">☰</div>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Elegancia y Confort</h1>
-            <p style="margin-bottom: 20px; font-weight: 300;">El referente de Tulancingo, ahora con reserva directa.</p>
-            <a href="#" class="btn-reserva">VER HABITACIONES</a>
+    <div class="hero">
+        <div class="hero-text">
+            <h1>Descubre la<br>verdadera joya</h1>
+            <p>El hotel más exclusivo de Tulancingo</p>
         </div>
-    </section>
-
-    <section class="features">
-        <h2>¿Por qué reservar aquí?</h2>
-        <div class="feature-grid">
-            <div class="card">
-                <h3>✨ Mejor Precio</h3>
-                <p>Garantizamos la tarifa más baja reservando en esta web, sin comisiones de Booking.</p>
-            </div>
-            <div class="card">
-                <h3>📍 Ubicación Ideal</h3>
-                <p>En el corazón de Tulancingo, cerca de todo lo que necesitas.</p>
-            </div>
-            <div class="card">
-                <h3>☕ Desayuno Incluido</h3>
-                <p>Exclusivo para clientes que reservan de forma directa con nosotros.</p>
-            </div>
-        </div>
-    </section>
-
-    <div class="sticky-booking">
-        <div>
-            <span class="price-label">Desde</span>
-            <span class="price-amount">$1,250 MXN</span>
-        </div>
-        <a href="#" class="btn-reserva" style="padding: 10px 25px; font-size: 0.9rem;">RESERVAR YA</a>
     </div>
 
-    <footer style="padding: 60px 20px 100px; background: #1a1a1a; color: white; text-align: center;">
-        <p>© 2025 Hotel La Joya Tulancingo</p>
-        <p style="font-size: 0.8rem; margin-top: 10px; color: #777;">Propuesta de Optimización Web por Angel Povedano</p>
-    </footer>
+    <div class="section">
+        <h2 class="section-title">Nuestras Experiencias</h2>
+        <div class="cards">
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-content">
+                    <h3 class="card-title">Habitaciones Premium</h3>
+                    <p class="card-desc">Confort absoluto con un diseño renovado y amenidades de primera clase.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="card-content">
+                    <h3 class="card-title">Restaurante El Jardín</h3>
+                    <p class="card-desc">Gastronomía local con un toque contemporáneo en un ambiente rodeado de naturaleza.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="benefits">
+        <h2 class="benefits-title">¿Por qué reservar directo?</h2>
+        <div class="benefit-item">
+            <span class="benefit-icon">✓</span>
+            <span>Garantizamos la tarifa más baja sin comisiones ocultas.</span>
+        </div>
+        <div class="benefit-item">
+            <span class="benefit-icon">✓</span>
+            <span>Desayuno de cortesía exclusivo para reservas web.</span>
+        </div>
+        <div class="benefit-item">
+            <span class="benefit-icon">✓</span>
+            <span>Atención directa, modificaciones y cancelación flexible.</span>
+        </div>
+    </div>
+
+    <div class="footer">
+        © 2026 Hotel La Joya Tulancingo<br>
+        <strong>Propuesta de Diseño Optimizada por Angel Povedano</strong>
+    </div>
+
+    <div class="sticky-bar">
+        <div class="price">
+            Precio desde<br>
+            <strong>$1,200 MXN</strong>
+        </div>
+        <a href="#" class="btn">Reservar</a>
+    </div>
 </body>
 </html>
